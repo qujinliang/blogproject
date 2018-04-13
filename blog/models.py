@@ -13,6 +13,8 @@ class Category(models.Model):
     https://docs.djangoproject.com/en/1.10/ref/models/fields/#field-types
     """
     name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
 
 class Tag(models.Model):
     """
@@ -20,6 +22,8 @@ class Tag(models.Model):
     只有一个 name 实例。
     """
     name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
 
 class Post(models.Model):
     """
@@ -55,3 +59,5 @@ class Post(models.Model):
     # 这里我们通过ForeignKey 把文章和User关联起来
     # 因为我们规定一篇文章只有一个作者，而一个作者可以写多篇文章，所以这里也是一对多的关系。
     author = models.ForeignKey(User)
+    def __str__(self):
+        return self.title
